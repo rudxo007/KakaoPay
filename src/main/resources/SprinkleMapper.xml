@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kakao.pay.leekt.repository.SprinkleMapper">
+
+    <select id="selectSprinkleByUserId" resultType="sprinkle">
+        SELECT userId
+        ,roomId
+        ,money
+        ,receiveId
+        FROM SPRINKLE
+        WHERE userId = #{userId}
+    </select>
+
+    <select id="selectAllSprinkle" resultType="sprinkle">
+        SELECT userId
+        ,roomId
+        ,money
+        ,receiveId
+        FROM SPRINKLE
+    </select>
+
+    <select id="selectNumSprinkle" resultType="int">
+        SELECT count(userId)
+        FROM SPRINKLE
+    </select>
+
+    <insert id="insertSprinkle">
+        INSERT INTO MONEY (id, room, token, sprinkle, sprinkle_time, token)
+        VALUES (#{id}, #{room}, #{token}, #{sprinkle}, now(), #{token})
+    </insert>
+
+</mapper>
